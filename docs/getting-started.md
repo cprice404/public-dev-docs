@@ -13,8 +13,9 @@ If you're looking to jump in and get started with Momento Serverless Cache with 
 
 You can try out our CLI tool today, right in your browser.  No software installation required!
 
-Head over to our [Try Momento Serverless Cache page](https://www.gomomento.com/try-momento-for-free), and
-you can experiment with Momento CLI commands in a shell session directly inside your browser.
+<iframe width="100%" height="640" sandbox="allow-forms allow-modals allow-popups allow-same-origin allow-scripts" src="https://play.instruqt.com/embed/momento/tracks/sandbox-container?token=em_MDCxRw3S1rKNL37i"></iframe>
+
+You can experiment with Momento CLI commands in a shell session directly inside your browser.
 You can create a free auth token, create a cache, and start running `set` and `get` commands
 on your cache. It only takes a few minutes!
 
