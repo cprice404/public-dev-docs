@@ -1,23 +1,8 @@
 import visit from 'unist-util-visit';
 // eslint-disable-next-line import/no-unresolved,node/no-missing-import
 import * as unist from 'unist';
-
-// for this POC, here we define some hard-coded example snippets.  In the real, working version of this plugin,
-// there would be some code to pull this stuff from the sdk git repos.
-const temporaryHardCodedCodeSnippets = new Map([
-  [
-    'example:typescript:code:ListCaches',
-    'This snippet would be pulled from the node.js repo and contain sample code for listing caches in TS',
-  ],
-  [
-    'example:go:description:Logging',
-    'This snippet would be pulled from the go repo, and contain prose about logging support in our Golang SDK',
-  ],
-  [
-    'example:go:code:Logging',
-    'This snippet would be pulled from the go repo, and contain example code illustrating logging support.',
-  ],
-]);
+import {SnippetResolver} from './examples/snippet-resolver';
+import {exampleLanguage, exampleSnippetType} from './examples/examples';
 
 function markdownNodeContainsExampleSnippets<T extends unist.Node>(
   node: unknown
@@ -36,6 +21,7 @@ function markdownNodeContainsExampleSnippets<T extends unist.Node>(
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function plugin(options: unknown): unknown {
   console.log('LOADING EXAMPLE SNIPPETS PLUGIN!');
+  const snippetResolver = new SnippetResolver();
   function transformer(tree: unist.Node) {
     visit(tree, markdownNodeContainsExampleSnippets, node => {
       console.log(
@@ -48,7 +34,13 @@ function plugin(options: unknown): unknown {
       literal.value = value.replace(
         /%%%([^%]*)%%%/g,
         (match: string, exampleId: string) => {
-          return temporaryHardCodedCodeSnippets.get(exampleId) ?? '';
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const [_, language, snippetType, snippetId] = exampleId.split(':');
+          return snippetResolver.resolveSnippet(
+            exampleLanguage(language),
+            exampleSnippetType(snippetType),
+            snippetId
+          );
         }
       );
     });
