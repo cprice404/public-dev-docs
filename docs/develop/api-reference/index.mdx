@@ -7,6 +7,7 @@ description: Learn the API calls you need to know and how to use them with Momen
 ---
 
 import { SdkExamples } from "@site/src/components/SdkExamples";
+import { SdkExampleSnippets } from "@site/src/components/SdkExampleSnippets";
 
 # API reference for Momento Cache
 
@@ -227,6 +228,10 @@ Sets the value in cache with a given Time To Live (TTL) seconds. If a value for 
 | key        | []Byte | The key under which the value is to be added. |
 | value      | []Byte | The value to be stored.                       |
 | ttlSeconds | int    | Time to Live for the item in Cache.           |
+
+<SdkExampleSnippets
+  snippetId={'Set'}
+  />
 
 <SdkExamples
   js={`

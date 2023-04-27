@@ -6,6 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 // const exampleSnippetsPlugin = require('./src/remark/inject-example-code-snippets');
 const exampleSnippetsPlugin = require('./plugins/example-code-snippets/dist/inject-example-code-snippets');
+// const exampleSnippetsPostBuildPlugin = require('./plugins/example-code-snippets/dist/example-code-snippets-post-build');
 // const exampleSnippetsPlugin = require('./src/remark/foo');
 
 /** @type {import('@docusaurus/types').Config} */
@@ -219,6 +220,7 @@ const config = {
         },**/
       }
     ],
+    './plugins/example-code-snippets/dist/example-code-snippets-post-build'
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
