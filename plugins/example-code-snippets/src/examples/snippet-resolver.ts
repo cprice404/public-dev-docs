@@ -12,29 +12,9 @@ export interface SnippetResolver {
 class DefaultSnippetResolver {
   // for this POC, here we define some hard-coded example snippets.  In the real, working version of this plugin,
   // there would be some code to pull this stuff from the sdk git repos.
-  // private readonly temporaryHardCodedCodeSnippets = new Map([
-  //   [
-  //     'example:javascript:code:Set',
-  //     'This snippet would be pulled from the node.js repo and contain sample code for setting values in JS',
-  //   ],
-  //   [
-  //     'example:go:code:Set',
-  //     'This snippet would be pulled from the go repo and contain sample code for setting values in go',
-  //   ],
-  //   [
-  //     'example:typescript:code:ListCaches',
-  //     'This snippet would be pulled from the node.js repo and contain sample code for listing caches in TS',
-  //   ],
-  //   [
-  //     'example:go:description:Logging',
-  //     'This snippet would be pulled from the go repo, and contain prose about logging support in our Golang SDK',
-  //   ],
-  //   [
-  //     'example:go:code:Logging',
-  //     'This snippet would be pulled from the go repo, and contain example code illustrating logging support.',
-  //   ],
-  // ]);
-
+  //
+  // Even for the hard-coded snippets that we keep in this repo until the SDK repos are all ready for this stuff,
+  // this format is not very good.  I will improve it in the next PR.
   private readonly temporaryHardCodedCodeSnippets: Map<
     string,
     Map<ExampleSnippetType, Map<ExampleLanguage, string>>
