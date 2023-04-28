@@ -2,12 +2,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import React from 'react';
-import {SNIPPET_RESOLVER} from '../../../plugins/example-code-snippets/dist/examples/snippet-resolver';
 import {
   ExampleLanguage,
   ExampleSnippetType,
   languageDisplayName
 } from '../../../plugins/example-code-snippets/dist/examples/examples';
+import {
+  SNIPPET_RESOLVER
+} from "../../../plugins/example-code-snippets/dist/examples/resolvers/default-snippet-resolver";
 
 
 /**

@@ -17,5 +17,15 @@ module.exports = function (context, options) {
           .join('\n')}`
       );
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    configureWebpack(config: unknown, isServer: unknown, utils: unknown) {
+      return {
+        resolve: {
+          alias: {
+            path: require.resolve('path-browserify'),
+          },
+        },
+      };
+    },
   };
 };

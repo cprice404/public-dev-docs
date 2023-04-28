@@ -1,8 +1,8 @@
 import visit from 'unist-util-visit';
 // eslint-disable-next-line import/no-unresolved,node/no-missing-import
 import * as unist from 'unist';
-import {SNIPPET_RESOLVER} from './examples/snippet-resolver';
 import {exampleLanguage, exampleSnippetType} from './examples/examples';
+import {SNIPPET_RESOLVER} from './examples/resolvers/default-snippet-resolver';
 
 function markdownNodeContainsExampleSnippets<T extends unist.Node>(
   node: unknown
@@ -42,10 +42,12 @@ function plugin(options: unknown): unknown {
         (match: string, exampleId: string) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const [_, language, snippetType, snippetId] = exampleId.split(':');
-          return SNIPPET_RESOLVER.resolveSnippet(
-            exampleLanguage(language),
-            exampleSnippetType(snippetType),
-            snippetId
+          return (
+            SNIPPET_RESOLVER.resolveSnippet(
+              exampleLanguage(language),
+              exampleSnippetType(snippetType),
+              snippetId
+            ) ?? ''
           );
         }
       );

@@ -2,3 +2,4 @@ node_modules
 dist
 **/*.d.ts
 jest*.config.ts
+sdk-git-repos
