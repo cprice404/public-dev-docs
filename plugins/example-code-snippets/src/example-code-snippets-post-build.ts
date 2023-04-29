@@ -20,9 +20,16 @@ module.exports = function (context, options) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     configureWebpack(config: unknown, isServer: unknown, utils: unknown) {
       return {
+        node: {
+          __dirname: true,
+        },
         resolve: {
           alias: {
             path: require.resolve('path-browserify'),
+          },
+          fallback: {
+            // fs: false,
+            fs: require.resolve('fs'),
           },
         },
       };

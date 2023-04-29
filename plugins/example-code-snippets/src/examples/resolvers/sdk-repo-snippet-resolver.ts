@@ -7,21 +7,49 @@ import {
 import {SdkSourceProvider} from '../sdk-source/sdk-source-provider';
 import {SdkGithubRepoSourceProvider} from '../sdk-source/sdk-github-repo-source-provider';
 import {Sdk} from '../sdk-source/sdks';
+import {SnippetSourceParser} from './source-parsers/snippet-source-parser';
+import {JavascriptSnippetSourceParser} from './source-parsers/languages/javascript-snippet-source-parser';
+import {TypescriptSnippetSourceParser} from './source-parsers/languages/typescript-snippet-source-parser';
 
 export class SdkRepoSnippetResolver implements SnippetResolver {
   private readonly sourceProvider: SdkSourceProvider =
     new SdkGithubRepoSourceProvider();
   private readonly cachedSourceDirs = new Map<Sdk, string>();
+  private readonly sourceParsers = new Map<
+    ExampleLanguage,
+    SnippetSourceParser
+  >();
+
+  constructor() {
+    for (const languageVal in ExampleLanguage) {
+      const language: ExampleLanguage =
+        ExampleLanguage[languageVal as keyof typeof ExampleLanguage];
+      const parser = this.sourceParserForLanguage(language);
+      if (parser !== undefined) {
+        this.sourceParsers.set(language, parser);
+      } else {
+        console.log(
+          `No source parser available for language ${language.valueOf()}`
+        );
+      }
+    }
+  }
 
   resolveSnippet(
     language: ExampleLanguage,
     snippetType: ExampleSnippetType,
     snippetId: ExampleSnippetId
   ): string | undefined {
-    const sdk = sdkForLanguage(language);
-    const dir = this.sourceDir(sdk);
-    console.log(`Source dir for language '${language}' is: '${dir}'`);
     return undefined;
+    // const sdk = sdkForLanguage(language);
+    // const dir = this.sourceDir(sdk);
+    // console.log(`Source dir for language '${language}' is: '${dir}'`);
+    // const sourceParser = this.sourceParserForLanguage(language);
+    // if (sourceParser === undefined) {
+    //   return undefined;
+    // } else {
+    //   return sourceParser.parseSourceForSnippet(snippetType, snippetId);
+    // }
   }
 
   private sourceDir(sdk: Sdk): string {
@@ -30,6 +58,38 @@ export class SdkRepoSnippetResolver implements SnippetResolver {
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.cachedSourceDirs.get(sdk)!;
+  }
+
+  private sourceParserForLanguage(
+    language: ExampleLanguage
+  ): SnippetSourceParser | undefined {
+    const sdk = sdkForLanguage(language);
+    const sourceDir = this.sourceDir(sdk);
+    switch (language) {
+      case ExampleLanguage.TYPESCRIPT:
+        return new TypescriptSnippetSourceParser(sourceDir);
+      case ExampleLanguage.JAVASCRIPT:
+        return new JavascriptSnippetSourceParser(sourceDir);
+      case ExampleLanguage.CSHARP:
+        return undefined;
+      case ExampleLanguage.PYTHON:
+        return undefined;
+      case ExampleLanguage.GO:
+        return undefined;
+      case ExampleLanguage.JAVA:
+        return undefined;
+      case ExampleLanguage.PHP:
+        return undefined;
+      case ExampleLanguage.RUST:
+        return undefined;
+      case ExampleLanguage.RUBY:
+        return undefined;
+      case ExampleLanguage.CLI:
+        return undefined;
+      default:
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        throw new Error(`Unrecognized language: ${language}`);
+    }
   }
 }
 

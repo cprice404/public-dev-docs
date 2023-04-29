@@ -26,17 +26,29 @@ export class DefaultSnippetResolver implements SnippetResolver {
       return fromSdkRepo;
     }
 
+    console.log(
+      `Snippet not available from SDK repo; falling back to legacy resolver (${language.valueOf()}, ${snippetType.valueOf()}, ${snippetId.valueOf()})`
+    );
+
     MISSING_SNIPPETS_REGISTRY.registerMissingSnippet({
       language,
       snippetType,
       snippetId,
     });
 
-    return this.fallbackLegacyResolver.resolveSnippet(
+    const fallbackSnippet = this.fallbackLegacyResolver.resolveSnippet(
       language,
       snippetType,
       snippetId
     );
+    if (fallbackSnippet !== undefined) {
+      return fallbackSnippet;
+    }
+
+    console.log(
+      `Snippet not available from legacy resolver; omitting (${language.valueOf()}, ${snippetType.valueOf()}, ${snippetId.valueOf()}`
+    );
+    return undefined;
   }
 }
 

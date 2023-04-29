@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "prestart": "./prepare-ts-plugins.sh",
+    "prestart": "./prepare-ts-plugins.sh && ./prepare-sdk-git-repos.sh",
     "start": "docusaurus start --no-open",
+    "prestartfaster": "./prepare-ts-plugins.sh",
+    "startfaster": "docusaurus start --no-open",
     "prebuild": "./prepare-ts-plugins.sh",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",

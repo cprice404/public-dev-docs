@@ -2,7 +2,7 @@ import {SdkSourceProvider} from './sdk-source-provider';
 import {Sdk} from './sdks';
 import * as path from 'path';
 
-const SDK_GIT_REPOS_DIR = './sdk-git-repos';
+const SDK_GIT_REPOS_DIR = path.join(__dirname, '../../../../../sdk-git-repos');
 
 export class SdkGithubRepoSourceProvider implements SdkSourceProvider {
   sdkSourceDir(sdk: Sdk): string {
