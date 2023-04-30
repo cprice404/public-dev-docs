@@ -7,9 +7,9 @@ import {
   ExampleSnippetType,
   languageDisplayName
 } from '../../../plugins/example-code-snippets/dist/examples/examples';
-import {
-  SNIPPET_RESOLVER
-} from "../../../plugins/example-code-snippets/dist/examples/resolvers/default-snippet-resolver";
+// import {
+//   SNIPPET_RESOLVER
+// } from "../../../plugins/example-code-snippets/dist/examples/resolvers/default-snippet-resolver";
 
 
 /**
@@ -22,12 +22,13 @@ import {
  * @constructor
  */
 export const SdkExampleSnippets = ({snippetId}) => {
-  const snippetResolver = SNIPPET_RESOLVER;
+  // const snippetResolver = SNIPPET_RESOLVER;
 
   return (
     <Tabs>
       {Object.values(ExampleLanguage).map(l => {
-        const snippet = snippetResolver.resolveSnippet(l, ExampleSnippetType.CODE, snippetId);
+        // const snippet = snippetResolver.resolveSnippet(l, ExampleSnippetType.CODE, snippetId);
+        const snippet = 'HABANERO'
         if (snippet) {
           return (<TabItem value={l} label={languageDisplayName(l)}>
             <CodeBlock language={l}>{snippet}</CodeBlock>

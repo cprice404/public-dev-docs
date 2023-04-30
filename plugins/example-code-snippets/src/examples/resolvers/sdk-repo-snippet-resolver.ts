@@ -40,16 +40,16 @@ export class SdkRepoSnippetResolver implements SnippetResolver {
     snippetType: ExampleSnippetType,
     snippetId: ExampleSnippetId
   ): string | undefined {
-    return undefined;
-    // const sdk = sdkForLanguage(language);
-    // const dir = this.sourceDir(sdk);
-    // console.log(`Source dir for language '${language}' is: '${dir}'`);
-    // const sourceParser = this.sourceParserForLanguage(language);
-    // if (sourceParser === undefined) {
-    //   return undefined;
-    // } else {
-    //   return sourceParser.parseSourceForSnippet(snippetType, snippetId);
-    // }
+    // return undefined;
+    const sdk = sdkForLanguage(language);
+    const dir = this.sourceDir(sdk);
+    console.log(`Source dir for language '${language}' is: '${dir}'`);
+    const sourceParser = this.sourceParserForLanguage(language);
+    if (sourceParser === undefined) {
+      return undefined;
+    } else {
+      return sourceParser.parseSourceForSnippet(snippetType, snippetId);
+    }
   }
 
   private sourceDir(sdk: Sdk): string {

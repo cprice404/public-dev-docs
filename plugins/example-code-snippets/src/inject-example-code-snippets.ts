@@ -9,12 +9,12 @@ function markdownNodeContainsExampleSnippets<T extends unist.Node>(
   node: unknown
 ): node is T {
   const unistNode = node as unist.Node;
-  console.log(`NODE TYPE: ${unistNode.type}`);
-  if (unistNode.type === 'jsx') {
-    console.log(
-      `\n\nFOUND A JSX NODE:\n\n${JSON.stringify(unistNode, null, 2)}\n\n`
-    );
-  }
+  // console.log(`NODE TYPE: ${unistNode.type}`);
+  // if (unistNode.type === 'jsx') {
+  //   console.log(
+  //     `\n\nFOUND A JSX NODE:\n\n${JSON.stringify(unistNode, null, 2)}\n\n`
+  //   );
+  // }
   if (unistNode.type === 'text' || unistNode.type === 'code') {
     const literal = unistNode as unist.Literal;
     const value = literal.value as string;
@@ -46,24 +46,49 @@ function plugin(options: unknown): unknown {
       const literal = node as unist.Literal;
       const value = literal.value as string;
 
-      literal.value = value.replace(
+      const snippet = value.replace(
         /%%%([^%]*)%%%/g,
         (match: string, exampleId: string) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const [_, language, snippetType, snippetId] = exampleId.split(':');
-          const snippet =
+          return (
             SNIPPET_RESOLVER.resolveSnippet(
               exampleLanguage(language),
               exampleSnippetType(snippetType),
               snippetId
-            ) ?? '';
-          return `       
-<SdkExamples
-  js=${snippet}
-  />
-          `;
+            ) ?? ''
+          );
         }
       );
+
+      const theRuby = `
+require 'momento'
+MOMENTO_AUTH_TOKEN = "eyJhbGc.MyTestToken"
+DEFAULT_TTL_SECONDS = 15
+client = Momento::SimpleCacheClient.new(
+  auth_token: MOMENTO_AUTH_TOKEN, default_ttl: DEFAULT_TTL_SECONDS
+)
+response = client.get('test-cache', 'test-key')
+if response.hit?
+  puts response.value_string
+elsif response.miss?
+  puts "The item was not in the cache."
+elsif response.error?
+  raise response.error
+end`;
+
+      //       const theJs = `
+      // const authToken="eyJhbGc.MyTestToken";
+      // const defaultTTL = 15;
+      // const momento = new SimpleCacheClient(authToken, defaultTtl);
+      // momento.set('test-cache', 'test-key', 'test-value');`;
+
+      const sdkExamplesValue = `<SdkExamples
+  ruby={\`${theRuby.replace(/`/g, '\\`')}\`}
+  js={\`${snippet.replace(/[\\`$]/g, '\\$&')}\`}
+/>`;
+      console.log(`SDK EXAMPLES VALUE:\n\n\n\n${sdkExamplesValue}\n\n\n\n`);
+
       node.type = 'paragraph';
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -72,9 +97,20 @@ function plugin(options: unknown): unknown {
           type: 'text',
           value: hosts,
         },
+        // {
+        //   type: 'jsx',
+        //   value: `<SdkExamples\n  ruby="${hosts}"/>`,
+        // },
+        //         {
+        //           type: 'jsx',
+        //           value: `<SdkExamples
+        //   ruby="${theRuby.replace(/"/g, '&quot;')}"
+        //   js="${theJs.replace(/"/g, '&quot;')}"
+        // />`,
+        //         },
         {
           type: 'jsx',
-          value: '<SdkExamples\n  ruby="RUBYRUBYRUBY"/>',
+          value: sdkExamplesValue,
         },
         // {
         //   type: 'Tabs',
