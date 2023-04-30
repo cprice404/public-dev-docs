@@ -28,7 +28,7 @@ export class RegexSnippetSourceParser implements SnippetSourceParser {
       snippetType,
       snippetOptions,
     ] of this.snippetTypeParseOptions.entries()) {
-      console.log(fs.readFileSync('/etc/hosts').toString());
+      // console.log(fs.readFileSync('/etc/hosts').toString());
 
       // this.snippetTypeContent.set(
       //   snippetType,

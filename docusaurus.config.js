@@ -12,6 +12,7 @@ const config = {
   tagline: "The World's Fastest Cache",
   url: "https://docs.momentohq.com",
   baseUrl: "/",
+  // baseUrl: "/Users/cprice/git/momento/public-dev-docs/build/",
   projectName: "momentohq.github.io",
   organizationName: "momentohq",
   trailingSlash: false,

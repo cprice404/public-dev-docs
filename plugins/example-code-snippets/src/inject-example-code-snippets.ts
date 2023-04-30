@@ -3,11 +3,18 @@ import visit from 'unist-util-visit';
 import * as unist from 'unist';
 import {exampleLanguage, exampleSnippetType} from './examples/examples';
 import {SNIPPET_RESOLVER} from './examples/resolvers/default-snippet-resolver';
+import * as fs from 'fs';
 
 function markdownNodeContainsExampleSnippets<T extends unist.Node>(
   node: unknown
 ): node is T {
   const unistNode = node as unist.Node;
+  console.log(`NODE TYPE: ${unistNode.type}`);
+  if (unistNode.type === 'jsx') {
+    console.log(
+      `\n\nFOUND A JSX NODE:\n\n${JSON.stringify(unistNode, null, 2)}\n\n`
+    );
+  }
   if (unistNode.type === 'text' || unistNode.type === 'code') {
     const literal = unistNode as unist.Literal;
     const value = literal.value as string;
@@ -34,6 +41,8 @@ function markdownNodeContainsExampleSnippets<T extends unist.Node>(
 function plugin(options: unknown): unknown {
   function transformer(tree: unist.Node) {
     visit(tree, markdownNodeContainsExampleSnippets, node => {
+      console.log('USING FS IN THE INJECT PLUGIN');
+      const hosts = fs.readFileSync('/etc/hosts').toString();
       const literal = node as unist.Literal;
       const value = literal.value as string;
 
@@ -42,15 +51,65 @@ function plugin(options: unknown): unknown {
         (match: string, exampleId: string) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const [_, language, snippetType, snippetId] = exampleId.split(':');
-          return (
+          const snippet =
             SNIPPET_RESOLVER.resolveSnippet(
               exampleLanguage(language),
               exampleSnippetType(snippetType),
               snippetId
-            ) ?? ''
-          );
+            ) ?? '';
+          return `       
+<SdkExamples
+  js=${snippet}
+  />
+          `;
         }
       );
+      node.type = 'paragraph';
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      node.children = [
+        {
+          type: 'text',
+          value: hosts,
+        },
+        {
+          type: 'jsx',
+          value: '<SdkExamples\n  ruby="RUBYRUBYRUBY"/>',
+        },
+        // {
+        //   type: 'Tabs',
+        //   children: [
+        //     {
+        //       type: 'TabItem',
+        //       data: {
+        //         value: 'js',
+        //         label: 'JavaScript',
+        //       },
+        //       children: [
+        //         {
+        //           type: 'CodeBlock',
+        //           data: {
+        //             language: 'js',
+        //           },
+        //           children: [
+        //             {
+        //               type: 'text',
+        //               value: 'tabContents',
+        //             },
+        //           ],
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // },
+      ];
+      // return false;
+      /*
+      <Tabs>
+        <TabItem value="js" label="JavaScript">
+            <CodeBlock language={'js'}>{js}</CodeBlock>
+        </TabItem>
+       */
     });
   }
   return transformer;
