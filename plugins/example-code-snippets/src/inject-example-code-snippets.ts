@@ -119,13 +119,13 @@ function plugin(options: unknown): unknown {
 
       const sdkExamplesValue = `<SdkExampleSnippetTabs
   js={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  python={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  java={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  go={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  csharp={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  rust={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  ruby={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
-  cli={\`${snippetForLanguage(ExampleLanguage.JAVASCRIPT)}\`}
+  python={\`${snippetForLanguage(ExampleLanguage.PYTHON)}\`}
+  java={\`${snippetForLanguage(ExampleLanguage.JAVA)}\`}
+  go={\`${snippetForLanguage(ExampleLanguage.GO)}\`}
+  csharp={\`${snippetForLanguage(ExampleLanguage.CSHARP)}\`}
+  rust={\`${snippetForLanguage(ExampleLanguage.RUST)}\`}
+  ruby={\`${snippetForLanguage(ExampleLanguage.RUBY)}\`}
+  cli={\`${snippetForLanguage(ExampleLanguage.CLI)}\`}
 />
 `;
 
