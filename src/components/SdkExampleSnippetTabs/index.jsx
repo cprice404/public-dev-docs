@@ -44,5 +44,46 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import React from 'react';
 
-export const SdkExampleSnippets = ({snippetId}) => {};
+export const SdkExampleSnippetTabs = ({js, python, java, go, csharp, rust, ruby, cli}) => {
+  if (js || python || java || go || csharp || rust || ruby || cli) {
+    return (
+  <Tabs>
+    {js &&
+      <TabItem value="js" label="JavaScript">
+        <CodeBlock language={'js'}>{js}</CodeBlock>
+      </TabItem>}
+    {python &&
+      <TabItem value="python" label="Python">
+        <CodeBlock language={'python'}>{python}</CodeBlock>
+      </TabItem>}
+    {java &&
+      <TabItem value="java" label="Java">
+        <CodeBlock language={'java'}>{java}</CodeBlock>
+      </TabItem>}
+    {go &&
+      <TabItem value="go" label="Go">
+        <CodeBlock language={'go'}>{go}</CodeBlock>
+      </TabItem>}
+    {csharp &&
+      <TabItem value="csharp" label="C#">
+        <CodeBlock language={'csharp'}>{csharp}</CodeBlock>
+      </TabItem>}
+    {rust &&
+      <TabItem value="rust" label="Rust">
+        <CodeBlock language={'rust'}>{rust}</CodeBlock>
+      </TabItem>}
+    {ruby &&
+      <TabItem value="ruby" label="Ruby">
+        <CodeBlock language={'ruby'}>{ruby}</CodeBlock>
+      </TabItem>}
+    {cli &&
+      <TabItem value="cli" label="CLI">
+        <CodeBlock language={'cli'}>{cli}</CodeBlock>
+      </TabItem>}
+  </Tabs>
+    );
+  } else {
+    return null;
+  }
+}
 

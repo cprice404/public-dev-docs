@@ -8,6 +8,7 @@ export interface RegexSnippetTypeOptions {
   sourceFiles: Array<string>;
   startRegex: (snippetId: ExampleSnippetId) => RegExp;
   endRegex: (snippetId: ExampleSnippetId) => RegExp;
+  numLeadingSpacesToStrip: number;
 }
 
 export interface RegexSnippetSourceParserOptions {
@@ -71,7 +72,11 @@ export class RegexSnippetSourceParser implements SnippetSourceParser {
       const line = nextLine.value;
       if (line.match(startRegex)) {
         console.log(`Found match for starting regex:\n${line}`);
-        return this.captureUntilEndOfSnippet(contentLinesIterator, endRegex);
+        return this.captureUntilEndOfSnippet(
+          contentLinesIterator,
+          endRegex,
+          options.numLeadingSpacesToStrip
+        );
         // return undefined;
       }
       nextLine = contentLinesIterator.next();
@@ -82,7 +87,8 @@ export class RegexSnippetSourceParser implements SnippetSourceParser {
 
   private captureUntilEndOfSnippet(
     remainingLines: IterableIterator<string>,
-    endRegex: RegExp
+    endRegex: RegExp,
+    numLeadingSpacesToStrip: number
   ): string | undefined {
     const result = [];
     let nextLine = remainingLines.next();
@@ -92,7 +98,7 @@ export class RegexSnippetSourceParser implements SnippetSourceParser {
         console.log(
           `Found match for end regex!  Returning result:\n${result.join('\n')}`
         );
-        return result.join('\n');
+        return result.map(l => l.substring(numLeadingSpacesToStrip)).join('\n');
       }
       result.push(line);
       nextLine = remainingLines.next();

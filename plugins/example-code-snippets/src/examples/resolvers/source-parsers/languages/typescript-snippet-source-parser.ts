@@ -8,7 +8,12 @@ import * as path from 'path';
 export class TypescriptSnippetSourceParser extends RegexSnippetSourceParser {
   constructor(repoSourceDir: string) {
     const codeSnippetFiles: Array<string> = [
-      'examples/doc-examples-ts-apis.ts',
+      // TODO
+      // TODO
+      // TODO TODO TODO EXPLAIN
+      // TODO
+      // TODO
+      // 'examples/doc-examples-ts-apis.ts',
     ];
     super({
       snippetTypeParseOptions: new Map<
@@ -22,6 +27,7 @@ export class TypescriptSnippetSourceParser extends RegexSnippetSourceParser {
             startRegex: snippetId =>
               new RegExp(`^async function example_${snippetId.valueOf()}\\(`),
             endRegex: () => /^}/,
+            numLeadingSpacesToStrip: 2,
           },
         ],
       ]),
