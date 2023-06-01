@@ -10,7 +10,7 @@ export class JavascriptSnippetSourceParser extends RegexSnippetSourceParser {
     const wholeFileExamplesDir = '.';
     const codeSnippetFiles: Array<string> = [
       'examples/nodejs/doc-examples-js-apis.ts',
-      'examples/nodejs/docs-advanced-logging-example.ts'
+      'examples/nodejs/docs-advanced-logging-example.ts',
     ];
     super({
       wholeFileExamplesDir: path.join(repoSourceDir, wholeFileExamplesDir),
