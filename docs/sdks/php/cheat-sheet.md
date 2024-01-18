@@ -148,5 +148,5 @@ if ($response->asError()) {
 ```
 
 :::info
-Beyond these basic API calls check out the [API reference page](./../../cache/develop/api-reference/index.mdx) for more information on the full assortment of Momento API calls.
+Beyond these basic API calls check out the [API reference page](/cache/develop/api-reference/index.mdx) for more information on the full assortment of Momento API calls.
 :::
