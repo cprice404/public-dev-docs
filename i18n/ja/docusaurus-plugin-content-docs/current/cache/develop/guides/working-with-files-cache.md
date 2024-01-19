@@ -160,7 +160,7 @@ if __name__ == '__main__':
 
 ```
 
-Python SDKの使い方については、[Pythonチートシート](/sdks/python/cheat-sheet.md)をご覧ください。
+Python SDKの使い方については、[Pythonチートシート](/sdks/python/cache.md)をご覧ください。
 
    </TabItem>
 </Tabs>

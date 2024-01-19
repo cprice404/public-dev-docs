@@ -199,7 +199,7 @@ const config = {
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-python-cheat-sheet',
-            to: '/sdks/python/cheat-sheet',
+            to: '/sdks/python/cache',
           },
           {
             from: '/develop/sdks-integrations/deploying-javascript-web-sdk',

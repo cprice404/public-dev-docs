@@ -1,8 +1,8 @@
 ---
 sidebar_position: 1
 sidebar_label: Topics
-title: Getting started with Momento Topics in Kotlin
-description: Learn the basic building blocks for writing Kotlin code to interact with Momento Topics in your native Android applications, or your JVM server-side applications.
+title: Getting started with Momento Cache in Java
+description: Learn the basic building blocks for writing Java code to interact with Momento Cache.
 keywords:
   - momento
   - cache
@@ -21,9 +21,7 @@ keywords:
   - resources
   - getting started
   - quick start
-  - android
-  - mobile
-  - kotlin
+  - server-side
   - java
   - jvm
 ---
@@ -33,34 +31,34 @@ import { SdkExampleCodeBlock } from "@site/src/components/SdkExampleCodeBlock";
 // plugin will transform instances of SdkExampleCodeBlock to SdkExampleCodeBlockImpl
 import { SdkExampleCodeBlockImpl } from "@site/src/components/SdkExampleCodeBlockImpl";
 
-# Getting Started with Momento Topics in Kotlin
+# Getting Started with Momento Topics in Java
 
-If you need to get going quickly with Kotlin and Momento Topics, this page contains the basic API calls you'll need. [Check the Kotlin SDK examples](https://github.com/momentohq/client-sdk-kotlin/tree/main/examples) for complete, working code samples.
+If you need to get going quickly with Java and Momento Topics, this page contains the basic API calls you'll need. [Check the Java SDK examples](https://github.com/momentohq/client-sdk-java/tree/main/examples) for complete, working code samples.
 
 ## Install the Momento SDK
 
-The Momento SDK is available on Maven Central: [`software.momento.kotlin/sdk](
-https://central.sonatype.com/artifact/software.momento.kotlin/sdk).
+The Momento SDK is available on Maven Central: [`software.momento.java/sdk](
+https://central.sonatype.com/artifact/software.momento.java/sdk).
 
 :::tip
-Visit [Maven Central](https://central.sonatype.com/artifact/software.momento.kotlin/sdk) to find the latest available version of the SDK.
+Visit [Maven Central](https://central.sonatype.com/artifact/software.momento.java/sdk) to find the latest available version of the SDK.
 :::
 
-Install the client library in an existing Kotlin project:
+Install the client library in an existing Java project:
 
 ### Gradle
 
 ```kotlin
-implementation("software.momento.kotlin:sdk:x.x.x")
+implementation("software.momento.java:sdk:1.x.x")
 ```
 
 ### Maven
 
 ```xml
 <dependency>
-    <groupId>software.momento.kotlin</groupId>
+    <groupId>software.momento.java</groupId>
     <artifactId>sdk</artifactId>
-    <version>x.x.x</version>
+    <version>1.x.x</version>
 </dependency>
 ```
 
@@ -78,21 +76,21 @@ export MOMENTO_API_KEY=<your api key here>
 ## Set up a TopicClient
 This code creates the TopicClient that you will use to interact with your pub/sub topic.
 
-<SdkExampleCodeBlock language={'kotlin'} snippetId={'API_InstantiateTopicClient'} />
+<SdkExampleCodeBlock language={'java'} snippetId={'API_InstantiateTopicClient'} />
 
 ## Publish a message to a topic
 This is an example of publishing a message to a topic called "topic", then catching the return value to check if the publish was successful.
 
-<SdkExampleCodeBlock language={'kotlin'} snippetId={'API_TopicPublish'} />
+<SdkExampleCodeBlock language={'java'} snippetId={'API_TopicPublish'} />
 
 ## Subscribe to a topic
 This is an example of subscribing to a topic called "topic". When messages are published to this topic, the code here receives and prints them asynchronously.
 
-<SdkExampleCodeBlock language={'kotlin'} snippetId={'API_TopicSubscribe'} />
+<SdkExampleCodeBlock language={'java'} snippetId={'API_TopicSubscribe'} />
 
 ## Running the code
 
-You can find complete, working examples in the [Kotlin SDK GitHub repo examples directory](https://github.com/momentohq/client-sdk-kotlin/tree/main/examples).
+You can find complete, working examples in the [Java SDK GitHub repo examples directory](https://github.com/momentohq/client-sdk-java/tree/main/examples).
 
 :::info
 Beyond these basic API calls check out the [API reference page](/develop/api-reference) for more information on the full assortment of Momento API calls.

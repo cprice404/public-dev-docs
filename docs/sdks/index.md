@@ -182,12 +182,12 @@ Momento server-side SDKs allow you to take advantage of Momento's low-latency Ca
   flexWrap: 'wrap',
   gap: '10px'
 }}>
-  <LinkButton text="Overview" link="/sdks/nodejs"/>
-  <LinkButton text="Cache" link="TODO"/>
-  <LinkButton text="Topics" link="TODO"/>
-  <LinkButton text="Examples" link="TODO"/>
-  <LinkButton text="Packages" link="TODO" />
-  <LinkButton text="Source Code" link="TODO" />
+  <LinkButton text="Overview" link="/sdks/python"/>
+  <LinkButton text="Cache" link="/sdks/python/cache.html"/>
+  <LinkButton text="Topics" link="/sdks/python/topics.html"/>
+  <LinkButton text="Examples" link="https://github.com/momentohq/client-sdk-python/tree/main/examples" openInNewTab="true" />
+  <LinkButton text="Packages" link="https://pypi.org/project/momento/" openInNewTab="true" />
+  <LinkButton text="Source Code" link="https://github.com/momentohq/client-sdk-python" openInNewTab="true" />
 </div>
 ```
 
@@ -201,11 +201,11 @@ Momento server-side SDKs allow you to take advantage of Momento's low-latency Ca
   gap: '10px'
 }}>
   <LinkButton text="Overview" link="/sdks/java"/>
-  <LinkButton text="Cache" link="TODO"/>
-  <LinkButton text="Topics" link="TODO"/>
-  <LinkButton text="Examples" link="TODO"/>
-  <LinkButton text="Packages" link="TODO" />
-  <LinkButton text="Source Code" link="TODO" />
+  <LinkButton text="Cache" link="/sdks/java/cache.html"/>
+  <LinkButton text="Topics" link="/sdks/java/topics.html"/>
+  <LinkButton text="Examples" link="https://github.com/momentohq/client-sdk-java/tree/main/examples" openInNewTab="true" />
+  <LinkButton text="Packages" link="https://central.sonatype.com/artifact/software.momento.kotlin/sdk" openInNewTab="true" />
+  <LinkButton text="Source Code" link="https://github.com/momentohq/client-sdk-java" openInNewTab="true" />
 </div>
 ```
 
