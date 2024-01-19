@@ -187,7 +187,7 @@ const config = {
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-go-cheat-sheet',
-            to: '/sdks/go/cheat-sheet',
+            to: '/sdks/go/cache',
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-nodejs-cheat-sheet',
@@ -195,7 +195,7 @@ const config = {
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-php-cheat-sheet',
-            to: '/sdks/php/cheat-sheet',
+            to: '/sdks/php/cache',
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-python-cheat-sheet',
