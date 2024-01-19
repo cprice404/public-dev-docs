@@ -23,6 +23,7 @@ keywords:
   - getting started
   - swift
   - ios
+  - mobile
 ---
 
 # Momento Swift SDK for iOS

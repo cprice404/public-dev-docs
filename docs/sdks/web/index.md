@@ -25,6 +25,8 @@ keywords:
   - examples
   - resources
   - getting started
+  - browser
+  - web
 ---
 
 import { SdkExampleCodeBlock } from "@site/src/components/SdkExampleCodeBlock";

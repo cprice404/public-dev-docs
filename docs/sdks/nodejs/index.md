@@ -1,23 +1,34 @@
 ---
 sidebar_position: 1
-title: Momento Node.js SDK | Topics
 pagination_prev: null
 sidebar_label: Node.js
-description: Get started using the Momento Node.js SDK for Topics Today. Discover system requirements, explore our cheat sheets, and learn about cool integrations with one-click installs.
+title: Get to know the Momento Node.js SDK
+description: The Momento Node.js SDK allows you to create server-side applications in TypeScript or JavaScript, and take advantage of Momento's caching and pub-sub features. Find resources and examples here!
 keywords:
-    - momento
-    - topics
-    - event-driven architecture
-    - eda
-    - websockets
-    - node.js
-    - nodejs
-    - javascript
-    - sdk
-    - typescript
+  - momento
+  - cache
+  - caching
+  - topics
+  - pubsub
+  - pub/sub
+  - eda
+  - event-driven architecture
+  - redis
+  - serverless
+  - sdk
+  - sdks
+  - api
+  - typescript
+  - javascript
+  - nodejs
+  - node.js
+  - examples
+  - resources
+  - getting started
+  - server-side
 ---
 
-# Momento Node.js SDK - Cache Client
+# Momento Node.js SDK
 
 The Momento Node.js SDK is available via the npm package [`@gomomento/sdk`](https://www.npmjs.com/package/@gomomento/sdk).
 
