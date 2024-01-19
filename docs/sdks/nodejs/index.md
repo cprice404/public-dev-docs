@@ -30,8 +30,8 @@ The source code can be found on GitHub: [momentohq/client-sdk-javascript](https:
 
 ## Resources
 
-- [Node.js SDK Cache Cheat Sheet](./cheat-sheet.mdx)
-- [Node.js SDK Examples](https://github.com/momentohq/client-sdk-javascript/blob/main/examples/nodejs/README.md): working example projects that illustrate how to use the Node.js SDK
+- [Getting started with Momento Cache in JavaScript](/sdks/nodejs/cache.mdx)
+- [Getting started with Momento Topics in JavaScript](/sdks/nodejs/topics.mdx)
 - [Node.js SDK Configuration and Error Handling](./config-and-error-handling.mdx): Taking your code to production
 - [Node.js SDK Observability](./observability.mdx): Logging and Client-side Metrics with the Node.js SDK
 

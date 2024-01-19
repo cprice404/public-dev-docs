@@ -89,7 +89,7 @@ async function run() {
 run();
 ```
 
-Check our [Node.js cheat sheet](/sdks/nodejs/cheat-sheet.mdx) for more on using our Node.js SDK.
+Check our [Node.js Cache guide](/sdks/nodejs/cache.mdx) for more on using our Node.js SDK.
    </TabItem>
    <TabItem value="py" label="Python">
 

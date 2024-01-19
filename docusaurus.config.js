@@ -191,7 +191,7 @@ const config = {
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-nodejs-cheat-sheet',
-            to: '/sdks/nodejs/cheat-sheet',
+            to: '/sdks/nodejs/cache',
           },
           {
             from: '/develop/guides/cheat-sheets/momento-cache-php-cheat-sheet',
@@ -250,7 +250,7 @@ const config = {
           //This redirects users from the pre v1.5.0 docs location of the Node.js topics cheat sheet to the new location under /topics.
           {
             from: '/develop/sdks/nodejs/topics-cheat-sheet',
-            to: '/sdks/nodejs/topics-cheat-sheet'
+            to: '/sdks/nodejs/topics'
           },
           {
             from: '/topics/webhooks',
