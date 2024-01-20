@@ -46,6 +46,16 @@ To install in your Python application via pip, use:
 pip install momento
 ```
 
+## Set up your API key
+
+You'll need a [Momento API key](/cache/develop/authentication/api-keys) to authenticate with Momento. You can get one, preferably a fine-grained token, from the [Momento Web Console](https://console.gomomento.com/caches).
+Once you have a token, store it in an environment variable so that the Momento client can consume it:
+
+```
+export MOMENTO_API_KEY=<your Momento token here>
+```
+
+**Note**: it is best practice to put the token into something like AWS Secret Manager or GCP Secret Manager instead of an environment variable for enhanced security, but we are using one here for demo purposes.
 
 ## Import libraries and connect to return a CacheClient object
 
@@ -59,7 +69,7 @@ from momento.responses import CacheGet, CacheSet, CreateCache, ListCaches, Cache
 import os
 
 def create_client():
-  momento_auth_token = CredentialProvider.from_environment_variable('MOMENTO_AUTH_TOKEN')
+  momento_auth_token = CredentialProvider.from_environment_variable('MOMENTO_API_KEY')
   ttl  = timedelta(seconds=int(os.getenv('MOMENTO_TTL_SECONDS', '600')))
   config = {
     'configuration': Configurations.Laptop.v1(),
